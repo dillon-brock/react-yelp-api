@@ -9,6 +9,7 @@ function App() {
 
   // TODO -- add state for zip / search and add event listeners to the inputs
   const [zip, setZip] = useState('');
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,9 +23,10 @@ function App() {
   // TODO -- add event for button click to handle calling fetchBusinesses with zip / search
   const handleSearch = async () => {
     try {
-      const data = await fetchBusinesses(zip);
+      const data = await fetchBusinesses(zip, search);
       setBusinesses(data);
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e);
     }
   };
@@ -39,7 +41,7 @@ function App() {
         </div>
         <div className="form-control">
           <label>Query:</label>
-          <input type="text" placeholder="Search..." />
+          <input type="text" placeholder="Search..." onChange={(e) => setSearch(e.target.value)} />
         </div>
         <button onClick={handleSearch}>Search</button>
       </div>
