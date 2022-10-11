@@ -11,7 +11,7 @@ const handler = async (event) => {
       `https://api.yelp.com/v3/businesses/search?location=${zip}&term=${search}`, 
       {
         headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_YELP_API_KEY}`,
+          Authorization: `Bearer ${process.env.YELP_API_KEY}`,
         }
       }
     );
